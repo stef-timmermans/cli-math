@@ -35,6 +35,7 @@ int main() {
     // Begin the infinite loop and prompt the user
     printf("Welcome to CLI-Math!\n");
     printf("Enter a math expression or type 'exit' to quit.\n");
+    printf("For help, type 'help'.\n");
     while(1) {
 
         // Read a line of input from the user
@@ -49,6 +50,17 @@ int main() {
         if (strcmp(input, "exit") == 0) {
             break;
         }
+
+        // Check the edge case of the user typing "help"
+        if (strcmp(input, "help") == 0) {
+            printf( "This is a command-line based math program. You can type ");
+            printf("in an expression and its answer will be printed.\n");
+            printf("For example, '8 / 2' will return '4' to the terminal. ");
+            printf("The input is whitespace-agnostic.\n");
+            printf("To see this message again, type 'help'\n");
+        }
+
+        // Execute the command
     }
 
     // Exit successfully if the loop is broken
