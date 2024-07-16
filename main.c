@@ -1,7 +1,7 @@
 /**
  * File: main.c
  * Author: Stef Timmermans
- * Last Modified: 15 July 2024
+ * Last Modified: 16 July 2024
  * Description:
  *   Main file for project. Uses the functionality from
  *   file `cli-parse.c` to parse and validate an input
@@ -16,9 +16,6 @@
 // Project functionality
 #include "cli-parse.h"
 #include "cli-math.h"
-
-// General libraries (also included in above C files)
-#include "main.h"
 
 
 /**
@@ -36,33 +33,15 @@ int main() {
     printf("Welcome to CLI-Math!\n");
     printf("Enter a math expression or type 'exit' to quit.\n");
     printf("For help, type 'help'.\n");
-    while(1) {
 
-        // Read a line of input from the user
-        char input[_MAX_INPUT];
-        printf("$ ");
-        fgets(input, _MAX_INPUT, stdin);
-
-        // Remove the newline character from the input
-        input[strcspn(input, "\n")] = 0;
-
-        // Check the edge case of the user typing "exit"
-        if (strcmp(input, "exit") == 0) {
-            break;
-        }
-
-        // Check the edge case of the user typing "help"
-        if (strcmp(input, "help") == 0) {
-            printf( "This is a command-line based math program. You can type ");
-            printf("in an expression and its answer will be printed.\n");
-            printf("For example, '8 / 2' will return '4' to the terminal. ");
-            printf("The input is whitespace-agnostic.\n");
-            printf("To see this message again, type 'help'\n");
-        }
-
-        // Execute the command
+    // Infinite loop
+    while (1) {
+        // Poll the user for input
+        cli_poll();
     }
 
-    // Exit successfully if the loop is broken
+    // CLI-Math has exited successfully if cli_poll calls
+    // exit with EXIT_SUCCESS. The line below will never be
+    // reached and only exists for compiler compatibility.
     return EXIT_SUCCESS;
 }
